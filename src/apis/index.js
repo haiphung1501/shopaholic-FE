@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://shopaholic-api.onrender.com";
+const baseURL = "https://shopaholic-api.onrender.com";
 
 export const getAllProductReq = (keyword = "") =>
   axios.get(baseURL + `/api/product?search=${keyword}`);
