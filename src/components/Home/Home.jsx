@@ -36,10 +36,11 @@ export default function Home() {
             .catch((error) => {
                 dispatch(allProductFailed(error))
             })
-    }, [dispatch, error, alert])
+    }, [dispatch])
 
     const featuredProducts = products && products.filter(product => product.category === 'Laptop')
     if (loading) return <Loader />
+    if (error) return <Loader />
     return <Fragment>
         <Welcome />
         <FeaturedProduct />
