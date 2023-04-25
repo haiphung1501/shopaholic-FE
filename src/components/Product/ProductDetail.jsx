@@ -64,6 +64,7 @@ export default function ProductDetail() {
     }
 
     useEffect(() => {
+        console.log("Run useEffect")
         if (error) { return alert.error(error) }
         dispatch(productDetailRequest())
         const fetchData = async () => {
@@ -107,12 +108,12 @@ export default function ProductDetail() {
         size: window.innerWidth < 600 ? 15 : 20,
     }
 
-
+    console.log(product);
     if (loading) return (<Loader />)
+    if (!product) return (<Loader />)
     return (
         <React.Fragment>
             <Box sx={{ pt: 5 }}>
-
             </Box>
             <Paper sx={{ pb: 3, px: 2 }}>
                 <Grid container spacing={2}>
@@ -147,7 +148,7 @@ export default function ProductDetail() {
                             </Typography>
                         </Box>
                         <Typography color='#2196f3' font='Roboto' gutterBottom variant="h6" component="span">
-                            {`${product.price.toLocaleString()} VNĐ`}
+                            {product.price && `${product.price.toLocaleString()} VNĐ`}
                         </Typography>
                         <Box sx={{ pt: 2 }} display='flex' alignItems='center'>
                             <IconButton onClick={decreaseQuantity}>

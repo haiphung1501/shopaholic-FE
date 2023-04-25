@@ -11,12 +11,17 @@ function MyOrders() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log('useEffect')
         dispatch(getAllOrders());
-    }, [dispatch]);
+    }, []);
 
     const { loading, error, orders } = useSelector(state => state.orders)
+    console.log(orders)
 
-    const ordersToList = [...orders.orders].reverse()
+    let ordersToList = []
+    if (orders && orders.orders) {
+        ordersToList = [...orders.orders].reverse()
+    }
 
     if (loading) return (
         <Box sx={{
