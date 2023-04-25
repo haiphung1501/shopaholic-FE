@@ -22,7 +22,7 @@ export default function ProductDetail() {
     const { id } = useParams();
     const alert = useAlert();
     const navigate = useNavigate();
-    const { product, loading, error } = useSelector(state => state.productDetail)
+    const { product, loading } = useSelector(state => state.productDetail)
     const { products } = useSelector(state => state.product)
     const { isAuthenticated } = useSelector(state => state.user)
     const [recommendedProducts, setRecommendedProducts] = useState([]);
@@ -86,7 +86,7 @@ export default function ProductDetail() {
             }
         }
         setRecommendedProducts(recommended);
-    }, [dispatch, error, alert, id, render, product.category, product._id, products])
+    }, [dispatch, alert, id, render, product.category, product._id, products])
 
 
     const handleReviewSubmit = async () => {
@@ -109,7 +109,6 @@ export default function ProductDetail() {
 
     console.log(product);
     if (loading) return (<Loader />)
-    if (error) return (<h1>{error}</h1>)
     return (
         <React.Fragment>
             <Box sx={{ pt: 5 }}>
