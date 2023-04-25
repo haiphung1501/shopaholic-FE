@@ -65,7 +65,6 @@ export default function ProductDetail() {
 
     useEffect(() => {
         console.log("Run useEffect")
-        if (error) { return alert.error(error) }
         dispatch(productDetailRequest())
         const fetchData = async () => {
             await getProductDetailReq(id)
@@ -110,7 +109,7 @@ export default function ProductDetail() {
 
     console.log(product);
     if (loading) return (<Loader />)
-    if (!product) return (<Loader />)
+    if (error) return (<h1>{error}</h1>)
     return (
         <React.Fragment>
             <Box sx={{ pt: 5 }}>
