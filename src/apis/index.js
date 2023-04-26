@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const baseURL = "https://shopaholic-api.onrender.com";
-// const baseURL = "http://localhost:4000";
+// const baseURL = "https://shopaholic-api.onrender.com";
+const baseURL = "http://localhost:4000";
 
 export const getAllProductReq = (keyword = "") =>
   axios.get(baseURL + `/api/product?search=${keyword}`);
@@ -23,7 +23,7 @@ export const userLoginReq = async (email, password) => {
     password,
   });
 
-  return response.data;
+  return response;
 };
 
 export const userRegisterReq = (name, email, password) => {
