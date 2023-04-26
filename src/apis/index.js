@@ -13,14 +13,17 @@ export const getAllCategory = () =>
   axios.get(baseURL + "/api/product/category");
 
 export const userLoginReq = async (email, password) => {
-  return axios.post(
-    baseURL + "/api/user/login",
-    {
-      email,
-      password,
+  axios.defaults.withCredentials = true;
+
+  const response = await axios.post(baseURL + "/api/user/login", {
+    headers: {
+      "Content-Type": "application/json",
     },
-    { withCredentials: true }
-  );
+    email,
+    password,
+  });
+
+  return response.data;
 };
 
 export const userRegisterReq = (name, email, password) => {
