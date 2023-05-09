@@ -7,34 +7,28 @@ import {
     TableRow,
     TableCell,
     TableBody,
-    Typography,
-    Paper,
-    IconButton,
     Box,
-    Grid,
     Backdrop,
     CircularProgress,
     Snackbar,
     FormControl,
     InputLabel,
+    Paper,
     Select,
     MenuItem,
-    Button,
     Rating,
     TextField,
+    IconButton
 } from '@mui/material'
 import { useSelector } from 'react-redux'
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
+
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
-import { adminGetAllOrders, adminDeleteOrder } from '../../features/order/orderSlice'
+import { adminGetAllOrders } from '../../features/order/orderSlice'
 import { adminDeleteReview, adminGetAllProduct } from '../../features/product/productSlice';
 export default function AdminReviews() {
     const [deleting, setDeleting] = useState(false)
-    const [updating, setUpdating] = useState(false)
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [productReviewId, setproductReviewId] = useState('')
     const [review, setReview] = useState([])
@@ -48,8 +42,7 @@ export default function AdminReviews() {
         const item = products.filter((item) => item._id === event.target.value)
         setReview(item[0].reviews)
     }
-    const { orders, loading } = useSelector(state => state.orders)
-    const { products } = useSelector(state => state.product)
+    const { products, loading } = useSelector(state => state.product)
 
     const onDeleteHandler = async (id) => {
         try {

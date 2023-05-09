@@ -20,8 +20,6 @@ import {
     MenuItem,
 } from '@mui/material'
 import { useSelector } from 'react-redux'
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -46,8 +44,6 @@ export default function AdminOrders() {
         catch (error) { console.log(error) }
     }
     const handleChange = async (id, event) => {
-        console.log(id);
-        console.log(event.target.value);
         try {
             setUpdating(true)
             await dispatch(adminUpdateOrder({ id, orderData: { orderStatus: event.target.value } }))

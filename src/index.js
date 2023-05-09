@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store, { persistor } from "./store";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -19,6 +20,9 @@ const options = {
   transitions: transitions.SCALE,
 };
 
+if (process.env.NODE_ENV === "production") {
+  disableReactDevTools();
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
